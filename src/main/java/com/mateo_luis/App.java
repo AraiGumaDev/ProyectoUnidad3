@@ -2,8 +2,7 @@ package com.mateo_luis;
 
 /**
  * Hello world!
- *
- */
+ **/
 public class App 
 {
     public static void main( String[] args )
