@@ -4,7 +4,7 @@ import java.util.*;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDate;
 
-public class App {
+public class ApplicationRunner {
     public static void main(String[] args) {
       
       /*Este es un programa que podría usar una entidad estilo EPM para ver las 
