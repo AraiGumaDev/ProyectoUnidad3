@@ -13,20 +13,20 @@ public class ConsumptionRegisterServiceImpl implements ConsumptionRegisterServic
     ArrayList<Register> registrosDeConsumoDeAgua = registro.llenarRegistroDeConsumoDeAgua();
 
     @Override
-    public void intercambio() {
-        boolean intercambio;
+    public void ordenamientoBurbuja() {
+        boolean ordenamientoBurbuja;
         for (int i = 0; i < registrosDeConsumoDeAgua.size() - 1; i++) {
-            intercambio = false;
+            ordenamientoBurbuja = false;
 
             for (int j = 0; j < registrosDeConsumoDeAgua.size() - i - 1; j++) {
                 if (registrosDeConsumoDeAgua.get(j).numeroHabitantes() > registrosDeConsumoDeAgua.get(j + 1).numeroHabitantes()) {
                     Register temp = registrosDeConsumoDeAgua.get(j);
                     registrosDeConsumoDeAgua.set(j, registrosDeConsumoDeAgua.get(j + 1));
                     registrosDeConsumoDeAgua.set(j + 1, temp);
-                    intercambio = true;
+                    ordenamientoBurbuja = true;
                 }
             }
-            if (!intercambio) {
+            if (!ordenamientoBurbuja) {
                 break;
             }
         }
