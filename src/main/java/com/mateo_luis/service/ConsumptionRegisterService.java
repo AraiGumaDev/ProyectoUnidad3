@@ -2,7 +2,7 @@ package com.mateo_luis.service;
 
 public interface ConsumptionRegisterService {
 
-    void intercambio();
+    void ordenamientoBurbuja();
     void mediaDeConsumoPorVivienda();
     void mediaDeConsumoPorHabitante(Double totalDeAguaConsumida);
     void mediaDeHabitantesPorVivienda(Integer totalHabitantes);
