@@ -59,6 +59,14 @@ public class ConsumptionRegisterServiceImpl implements ConsumptionRegisterServic
                 + promedioPorHabitante + " Litros");
     }
 
+    public Integer totalHabitantes(){
+        Integer habitantesTotal=0;
+        for (Register registroConsumoAgua : registrosDeConsumoDeAgua) {
+            habitantesTotal = habitantesTotal + registroConsumoAgua.numeroHabitantes();
+        }
+        return habitantesTotal;
+    }
+
     @Override
     public void mediaDeHabitantesPorVivienda(Integer totalDeHabitantes) {
         System.out.println("\n----Media de habitantes por vivienda----");
