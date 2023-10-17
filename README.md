@@ -1,6 +1,6 @@
 # ProyectoUnidad3
 
-      /*Este es un programa que podría usar una entidad estilo EPM para ver las 
+      Este es un programa que podría usar una entidad estilo EPM para ver las 
       estádisticas y datos del consumo de los habitantes de una comunidad para 
       así generar concientización. 
       
@@ -9,4 +9,4 @@
       que vivo últimamente hay denuncias sobre que el agua se esta usando de manera indevida
       para actividades como lavader carros, un programa como este se puede aplicar en 
       cualquier comunidad y podría ayudar a identificar quienes son los individuos que 
-      hacen mal uso de este preciado recurso.*/
+      hacen mal uso de este preciado recurso.
