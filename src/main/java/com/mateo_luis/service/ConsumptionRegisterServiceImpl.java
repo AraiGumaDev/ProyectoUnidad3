@@ -12,6 +12,9 @@ public class ConsumptionRegisterServiceImpl implements ConsumptionRegisterServic
     RegisterInMemoryRepositoryImpl registro = new RegisterInMemoryRepositoryImpl();
     ArrayList<Register> registrosDeConsumoDeAgua = registro.llenarRegistroDeConsumoDeAgua();
 
+    public ConsumptionRegisterServiceImpl(RegisterInMemoryRepositoryImpl registerInMemoryRepositoryImpl) {
+    }
+
     @Override
     public void ordenamientoBurbuja() {
         boolean ordenamientoBurbuja;
