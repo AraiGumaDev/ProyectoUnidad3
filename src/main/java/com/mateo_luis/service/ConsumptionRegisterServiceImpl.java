@@ -38,30 +38,34 @@ public class ConsumptionRegisterServiceImpl implements ConsumptionRegisterServic
     @Override
     public void mediaDeConsumoPorVivienda() {
         System.out.println("----Media de consumo por vivienda----");
-        Double totalAguaConsumida = 0D;
-        for (Register registroConsumoAgua : registrosDeConsumoDeAgua) {
-            totalAguaConsumida = totalAguaConsumida + registroConsumoAgua.consumoAguaMes();
-        }
-        mediaDeConsumoPorHabitante(totalAguaConsumida);
-        Double promedioPorVivienda = totalAguaConsumida / registrosDeConsumoDeAgua.size();
+        Double aguaConsumidaTotal = totalAguaConsumida();
+        mediaDeConsumoPorHabitante(aguaConsumidaTotal);
+        Double promedioPorVivienda = aguaConsumidaTotal / registrosDeConsumoDeAgua.size();
         System.out.println("En total las " + registrosDeConsumoDeAgua.size() + " viviendas listadas consumieron: "
-                + totalAguaConsumida + " Litros");
+                + aguaConsumidaTotal + " Litros");
         System.out.println("Lo que da un promedio por vivienda de: " + promedioPorVivienda + " Litros");
+    }
+
+    @Override
+    public Double totalAguaConsumida(){
+        Double aguaConsumidaTotal = 0D;
+        for (Register registroConsumoAgua : registrosDeConsumoDeAgua) {
+            aguaConsumidaTotal = aguaConsumidaTotal + registroConsumoAgua.consumoAguaMes();
+        }
+    return aguaConsumidaTotal;
     }
 
     @Override
     public void mediaDeConsumoPorHabitante(Double aguaConsumidaTotal) {
         System.out.println("\n----Media de consumo por habitante----");
-        Integer totalHabitantes = 0;
-        for (Register registroConsumoAgua : registrosDeConsumoDeAgua) {
-            totalHabitantes = totalHabitantes + registroConsumoAgua.numeroHabitantes();
-        }
-        mediaDeHabitantesPorVivienda(totalHabitantes);
-        Double promedioPorHabitante = Math.round((aguaConsumidaTotal / totalHabitantes)*100.0)/100.0;
-        System.out.println("Habiendo " + totalHabitantes + " habitantes listados, el promedio de consumo por persona sería: "
+        Integer numeroHabitantes = totalHabitantes();
+        mediaDeHabitantesPorVivienda(numeroHabitantes);
+        Double promedioPorHabitante = Math.round((aguaConsumidaTotal / numeroHabitantes)*100.0)/100.0;
+        System.out.println("Habiendo " + numeroHabitantes + " habitantes listados, el promedio de consumo por persona sería: "
                 + promedioPorHabitante + " Litros");
     }
 
+    @Override
     public Integer totalHabitantes(){
         Integer habitantesTotal=0;
         for (Register registroConsumoAgua : registrosDeConsumoDeAgua) {
