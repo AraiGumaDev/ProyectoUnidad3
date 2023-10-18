@@ -11,8 +11,8 @@ public class ApplicationRunner {
       
    consumptionRegisterService.ordenamientoBurbuja();
    consumptionRegisterService.mediaDeConsumoPorVivienda();
-   //consumptionRegisterService.mediaDeConsumoPorHabitante(Double totalDeAguaConsumida);
-   //consumptionRegisterService.mediaDeHabitantesPorVivienda(Integer totalHabitantes);
+   consumptionRegisterService.mediaDeConsumoPorHabitante(consumptionRegisterService.totalAguaConsumida());
+   consumptionRegisterService.mediaDeHabitantesPorVivienda(consumptionRegisterService.totalHabitantes());
    consumptionRegisterService.medianaDeHabitantes();
    consumptionRegisterService.modaDeHabitantesPorHogar();
    consumptionRegisterService.registrosDesactualizados();

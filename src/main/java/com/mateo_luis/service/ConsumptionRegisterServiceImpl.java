@@ -36,7 +36,7 @@ public class ConsumptionRegisterServiceImpl implements ConsumptionRegisterServic
     }
 
     @Override
-    public void mediaDeConsumoPorVivienda() {
+    public Double mediaDeConsumoPorVivienda() {
         System.out.println("----Media de consumo por vivienda----");
         Double aguaConsumidaTotal = totalAguaConsumida();
         mediaDeConsumoPorHabitante(aguaConsumidaTotal);
@@ -44,6 +44,7 @@ public class ConsumptionRegisterServiceImpl implements ConsumptionRegisterServic
         System.out.println("En total las " + registrosDeConsumoDeAgua.size() + " viviendas listadas consumieron: "
                 + aguaConsumidaTotal + " Litros");
         System.out.println("Lo que da un promedio por vivienda de: " + promedioPorVivienda + " Litros");
+        return promedioPorVivienda;
     }
 
     @Override
@@ -56,13 +57,14 @@ public class ConsumptionRegisterServiceImpl implements ConsumptionRegisterServic
     }
 
     @Override
-    public void mediaDeConsumoPorHabitante(Double aguaConsumidaTotal) {
+    public Double mediaDeConsumoPorHabitante(Double aguaConsumidaTotal) {
         System.out.println("\n----Media de consumo por habitante----");
         Integer numeroHabitantes = totalHabitantes();
         mediaDeHabitantesPorVivienda(numeroHabitantes);
         Double promedioPorHabitante = Math.round((aguaConsumidaTotal / numeroHabitantes)*100.0)/100.0;
         System.out.println("Habiendo " + numeroHabitantes + " habitantes listados, el promedio de consumo por persona sería: "
                 + promedioPorHabitante + " Litros");
+        return promedioPorHabitante;
     }
 
     @Override
@@ -97,6 +99,7 @@ public class ConsumptionRegisterServiceImpl implements ConsumptionRegisterServic
             medianaHabitantes = "" + registrosDeConsumoDeAgua.get(posicion).numeroHabitantes();
         }
         System.out.println("La mediana de habitantes por hogar es: " + medianaHabitantes);
+        
     }
 
     @Override
