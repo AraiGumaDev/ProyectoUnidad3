@@ -7,7 +7,7 @@ public interface ConsumptionRegisterService {
     Double totalAguaConsumida();
     Double mediaDeConsumoPorHabitante(Double totalDeAguaConsumida);
     Integer totalHabitantes();
-    void mediaDeHabitantesPorVivienda(Integer totalHabitantes);
+    Double mediaDeHabitantesPorVivienda(Integer totalHabitantes);
     void medianaDeHabitantes();
     void modaDeHabitantesPorHogar();
     void registrosDesactualizados();

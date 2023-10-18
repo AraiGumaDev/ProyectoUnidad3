@@ -77,10 +77,11 @@ public class ConsumptionRegisterServiceImpl implements ConsumptionRegisterServic
     }
 
     @Override
-    public void mediaDeHabitantesPorVivienda(Integer totalDeHabitantes) {
+    public Double mediaDeHabitantesPorVivienda(Integer totalDeHabitantes) {
         System.out.println("\n----Media de habitantes por vivienda----");
         Double promediodeHabitantes = totalDeHabitantes / Double.valueOf(registrosDeConsumoDeAgua.size());
         System.out.println("En la comunidad hay un promedio de " + promediodeHabitantes + " habitantes por vivienda");
+        return promediodeHabitantes;
     }
 
     @Override
