@@ -7,9 +7,9 @@ import com.mateo_luis.service.ConsumptionRegisterServiceImpl;
 public class ApplicationRunner {
     public static void main(String[] args) {
   
-   ConsumptionRegisterService consumptionRegisterService = new ConsumptionRegisterServiceImpl(new RegisterInMemoryRepositoryImpl());
-      
+   ConsumptionRegisterService consumptionRegisterService = new ConsumptionRegisterServiceImpl(new RegisterInMemoryRepositoryImpl());   
    consumptionRegisterService.ordenamientoBurbuja();
+   
    consumptionRegisterService.mediaDeConsumoPorVivienda();
    consumptionRegisterService.mediaDeConsumoPorHabitante(consumptionRegisterService.totalAguaConsumida());
    consumptionRegisterService.mediaDeHabitantesPorVivienda(consumptionRegisterService.totalHabitantes());

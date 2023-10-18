@@ -85,7 +85,7 @@ public class ConsumptionRegisterServiceImpl implements ConsumptionRegisterServic
     }
 
     @Override
-    public void medianaDeHabitantes() {
+    public Double medianaDeHabitantes() {
         System.out.println("\n----Mediana de habitantes----");
       /*Ya que no hemos visto cómo convertir entre clases, opté por manejar la variable
       medianaHabitantes como un String para facilitarme las cosas*/
@@ -100,11 +100,12 @@ public class ConsumptionRegisterServiceImpl implements ConsumptionRegisterServic
             medianaHabitantes = "" + registrosDeConsumoDeAgua.get(posicion).numeroHabitantes();
         }
         System.out.println("La mediana de habitantes por hogar es: " + medianaHabitantes);
+        return Double.parseDouble(medianaHabitantes);
         
     }
 
     @Override
-    public void modaDeHabitantesPorHogar() {
+    public Integer modaDeHabitantesPorHogar() {
         System.out.println("\n----La moda de habitantes por hogar----");
         int maximoNumRepeticiones = 0;
         List<Integer> moda = new ArrayList<>();
@@ -135,20 +136,24 @@ public class ConsumptionRegisterServiceImpl implements ConsumptionRegisterServic
             }
         }
         System.out.println(" que se repitieron " + maximoNumRepeticiones + " veces.");
-
+        System.out.println(moda.get(moda.size()-1));
+        return moda.get(moda.size()-1);
     }
 
     @Override
-    public void registrosDesactualizados() {
+    public Integer registrosDesactualizados() {
         System.out.println("\n----Registros desactualizados----");
         System.out.println("Las siguientes viviendas tienen registros anteriores a el 2023-08-14:");
+        Integer count = 0;
         for (Register registroConsumoAgua : registrosDeConsumoDeAgua){
         /*Aquí use el metodo isBefore ya que con el operador < no me dejaba comparar,
         me gustaria saber si hay otra forma de hacerlo*/
             if (registroConsumoAgua.fechaUltimaMedicion().isBefore(LocalDate.parse("14/08/2023", DateTimeFormatter.ofPattern("dd/MM/uuuu")))) {
                 System.out.println(registroConsumoAgua.direccion()+"\túltimo registro: "+registroConsumoAgua.fechaUltimaMedicion());
+                count++;
             }
         }
+        return count;
     }
 
 
