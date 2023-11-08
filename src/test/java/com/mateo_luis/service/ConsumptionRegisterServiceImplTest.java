@@ -1,7 +1,7 @@
 package com.mateo_luis.service;
 
 import org.junit.jupiter.api.Test;
-import com.mateo_luis.repository.RegisterInMemoryRepositoryImpl;
+import com.mateo_luis.repository.RegisterInRepositoryRepositoryImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -14,7 +14,7 @@ public class ConsumptionRegisterServiceImplTest {
 
     @BeforeEach
     void setUp() {
-        this.consuptioConsumptionRegisterService = new ConsumptionRegisterServiceImpl(new RegisterInMemoryRepositoryImpl());
+        this.consuptioConsumptionRegisterService = new ConsumptionRegisterServiceImpl(new RegisterInRepositoryRepositoryImpl());
         this.consuptioConsumptionRegisterService.ordenamientoBurbuja();
       }
 

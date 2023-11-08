@@ -1,11 +1,84 @@
 package com.mateo_luis.repository;
-import com.mateo_luis.model.Register;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-public class RegisterInMemoryRepositoryImpl implements RegisterMemory{
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.mateo_luis.model.Register;
+
+public class RegisterUsingFileRepositoryImpl implements RegisterRepository {
+    private static final Logger logger = LoggerFactory.getLogger( RegisterInRepositoryRepositoryImpl.class);
+    private List<Register> registerList;
+
+    public RegisterUsingFileRepositoryImpl() {
+        this.registerList = new ArrayList<>(loadRegisters());
+    }
+
+    private List<Register> loadRegisters(){
+        logger.info( "Cargando los datos desde archivo" );
+        List<String> plainTextRegisterList =  readFileWithRegister();
+        List<Register> registerList = plainTextRegisterList.stream().map( this::buildRegister ).toList();
+        return registerList;
+    }
+
+    private List<String> readFileWithRegisters(){
+
+        Path path = Paths.get( "./src/main/resources/Registros.txt");
+        try (Stream<String> stream = Files.lines( path)) {
+            return stream.toList();
+        } catch (IOException x) {
+            logger.error("IOException: {0}", x);
+        }
+        return Collections.emptyList();
+    }
+
+    private Register buildRegister(String plainTextGrade){
+
+        String[] questionArray = plainTextRegister.split(",");
+        Register register = new Register( questionArray[0], Integer.valueOf(questionArray[1]), Integer.valueOf(questionArray[2]), LocalDate.parse( questionArray[3], DateTimeFormatter.ofPattern("dd/MM/uuuu")), Double.valueOf(questionArray[4]));
+
+        return register;
+    }
+
+    @Override
+    public List<Register> findAllRegisters() {
+        return registerList;
+    }
+
+    @Override
+    public Optional<Register> getRegister(String unidad) {
+        return this.registerList.stream().filter( p->p.project().equals( unidad ) ).findAny();
+    }
+
+    @Override
+    public Register addRegister(Register newRegister) {
+        this.registerList.add( newRegister );
+
+        return this.registerList.stream()
+                .filter( isTheRegisterOfTheProject( newRegister ) )//Busca la nota en la lista que corresponda al proyecto de la nota recien creada
+                .findAny()
+                .orElse( null );//Si no la encuentra devuelve nulo
+    }
+
+    private Predicate<Register> isTheRegisterOfTheProject(Register newRegister) {
+        return p -> p.project().equals( newRegister.project() );
+    }
+
+
+
+
 
     ArrayList<Register> registrosDeConsumo = new ArrayList<>();
     @Override

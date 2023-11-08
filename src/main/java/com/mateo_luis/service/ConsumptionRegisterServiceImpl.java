@@ -1,6 +1,6 @@
 package com.mateo_luis.service;
 import com.mateo_luis.model.Register;
-import com.mateo_luis.repository.RegisterInMemoryRepositoryImpl;
+import com.mateo_luis.repository.RegisterInRepositoryRepositoryImpl;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -9,10 +9,10 @@ import java.util.List;
 
 public class ConsumptionRegisterServiceImpl implements ConsumptionRegisterService {
 
-    RegisterInMemoryRepositoryImpl registro = new RegisterInMemoryRepositoryImpl();
+    RegisterInRepositoryRepositoryImpl registro = new RegisterInRepositoryRepositoryImpl();
     ArrayList<Register> registrosDeConsumoDeAgua = registro.llenarRegistroDeConsumoDeAgua();
 
-    public ConsumptionRegisterServiceImpl(RegisterInMemoryRepositoryImpl registerInMemoryRepositoryImpl) {
+    public ConsumptionRegisterServiceImpl(RegisterInRepositoryRepositoryImpl registerInMemoryRepositoryImpl) {
     }
 
     @Override
