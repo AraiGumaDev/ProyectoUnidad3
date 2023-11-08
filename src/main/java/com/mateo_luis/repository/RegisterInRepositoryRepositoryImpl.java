@@ -44,8 +44,7 @@ public class RegisterUsingFileRepositoryImpl implements RegisterRepository {
         return Collections.emptyList();
     }
 
-    private Register buildRegister(String plainTextGrade){
-
+    private Register buildRegister(String plainTextRegister){
         String[] questionArray = plainTextRegister.split(",");
         Register register = new Register( questionArray[0], Integer.valueOf(questionArray[1]), Integer.valueOf(questionArray[2]), LocalDate.parse( questionArray[3], DateTimeFormatter.ofPattern("dd/MM/uuuu")), Double.valueOf(questionArray[4]));
 
@@ -58,8 +57,8 @@ public class RegisterUsingFileRepositoryImpl implements RegisterRepository {
     }
 
     @Override
-    public Optional<Register> getRegister(String unidad) {
-        return this.registerList.stream().filter( p->p.project().equals( unidad ) ).findAny();
+    public Optional<Register> getRegister(String direccion) {
+        return this.registerList.stream().filter( p->p.direccion().equals( direccion ) ).findAny();
     }
 
     @Override
@@ -73,9 +72,8 @@ public class RegisterUsingFileRepositoryImpl implements RegisterRepository {
     }
 
     private Predicate<Register> isTheRegisterOfTheProject(Register newRegister) {
-        return p -> p.project().equals( newRegister.project() );
+        return p -> p.direccion().equals( newRegister.direccion() );
     }
-
 
 
 
