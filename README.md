@@ -1,4 +1,4 @@
-# ProyectoUnidad3
+# Registro Consumo Agua
 
       Este es un programa que podría usar una entidad estilo EPM para ver las 
       estádisticas y datos del consumo de los habitantes de una comunidad para 
@@ -10,3 +10,11 @@
       para actividades como lavader carros, un programa como este se puede aplicar en 
       cualquier comunidad y podría ayudar a identificar quienes son los individuos que 
       hacen mal uso de este preciado recurso.
+
+#Tecnologías Usadas
+
+      * JDK 17
+      * JUnit (Test)
+      * slf4j 
+      * Google Java Formatter
+      
