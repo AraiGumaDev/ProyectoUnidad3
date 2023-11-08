@@ -18,5 +18,7 @@ public class ApplicationRunner {
    consumptionRegisterService.modaDeHabitantesPorHogar();
    consumptionRegisterService.registrosDesactualizados();
 
+
+
   }
 }
