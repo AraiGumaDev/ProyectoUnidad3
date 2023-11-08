@@ -8,9 +8,7 @@ import java.util.Optional;
 
 public interface RegisterRepository {
 
-    ArrayList<Register> llenarRegistroDeConsumoDeAgua();
-
     List<Register> findAllRegisters();
     Optional<Register> getRegister(String direccion);
-    Register addRegister(Register newRegister)
+    Register addRegister(Register newRegister);
 }

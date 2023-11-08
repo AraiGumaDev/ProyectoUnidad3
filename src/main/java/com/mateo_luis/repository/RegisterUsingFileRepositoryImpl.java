@@ -74,10 +74,7 @@ public class RegisterUsingFileRepositoryImpl implements RegisterRepository {
     private Predicate<Register> isTheRegisterOfTheProject(Register newRegister) {
         return p -> p.direccion().equals( newRegister.direccion() );
     }
-
-
-
-
+/*
     ArrayList<Register> registrosDeConsumo = new ArrayList<>();
     @Override
     public ArrayList<Register> llenarRegistroDeConsumoDeAgua() {
@@ -122,6 +119,6 @@ public class RegisterUsingFileRepositoryImpl implements RegisterRepository {
         registrosDeConsumo.add(new Register("Carrera 16", 1, 1, LocalDate.parse("03/09/2023",
                 DateTimeFormatter.ofPattern("dd/MM/uuuu")), 6549D));
         return registrosDeConsumo;
-    }
+    } */
 }
 

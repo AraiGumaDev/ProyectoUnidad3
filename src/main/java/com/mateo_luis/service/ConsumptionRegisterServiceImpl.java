@@ -1,6 +1,9 @@
 package com.mateo_luis.service;
 import com.mateo_luis.model.Register;
-import com.mateo_luis.repository.RegisterInRepositoryRepositoryImpl;
+import com.mateo_luis.repository.RegisterRepository;
+import com.mateo_luis.repository.RegisterUsingFileRepositoryImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -9,10 +12,19 @@ import java.util.List;
 
 public class ConsumptionRegisterServiceImpl implements ConsumptionRegisterService {
 
-    RegisterInRepositoryRepositoryImpl registro = new RegisterInRepositoryRepositoryImpl();
-    ArrayList<Register> registrosDeConsumoDeAgua = registro.llenarRegistroDeConsumoDeAgua();
 
-    public ConsumptionRegisterServiceImpl(RegisterInRepositoryRepositoryImpl registerInMemoryRepositoryImpl) {
+    private static final Logger logger = LoggerFactory.getLogger(ConsumptionRegisterServiceImpl.class);
+    private RegisterRepository registerRepository = null;
+
+    public ConsumptionRegisterServiceImpl(RegisterRepository registerRepository) {
+        this.registerRepository = registerRepository;
+    }
+
+
+    RegisterUsingFileRepositoryImpl registro = new RegisterUsingFileRepositoryImpl();
+    List<Register> registrosDeConsumoDeAgua = this.registerRepository.findAllRegisters();
+
+    public ConsumptionRegisterServiceImpl(RegisterUsingFileRepositoryImpl registerUsingFileRepositoryImpl) {
     }
 
     @Override
