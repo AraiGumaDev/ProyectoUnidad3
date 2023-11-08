@@ -97,9 +97,8 @@ public class ConsumptionRegisterServiceImpl implements ConsumptionRegisterServic
 
     @Override
     public Double medianaDeHabitantes() {
+        logger.info( "Calculando mediana de habitantes" );
         System.out.println("\n----Mediana de habitantes----");
-      /*Ya que no hemos visto cómo convertir entre clases, opté por manejar la variable
-      medianaHabitantes como un String para facilitarme las cosas*/
         String medianaHabitantes = "";
 
         if (this.registerRepository.findAllRegisters().size() % 2 == 0) {
@@ -148,7 +147,6 @@ public class ConsumptionRegisterServiceImpl implements ConsumptionRegisterServic
             }
         }
         System.out.println(" que se repitieron " + maximoNumRepeticiones + " veces.");
-       // System.out.print(moda.get(moda.size()-1));                       //<---- //---->
         return moda.get(moda.size()-1);
     }
 
@@ -158,8 +156,6 @@ public class ConsumptionRegisterServiceImpl implements ConsumptionRegisterServic
         System.out.println("\n Las siguientes viviendas tienen registros anteriores a el 2023-08-14:");
         Integer count = 0;
         for (Register registroConsumoAgua : this.registerRepository.findAllRegisters()){
-        /*Aquí use el metodo isBefore ya que con el operador < no me dejaba comparar,
-        me gustaria saber si hay otra forma de hacerlo*/
             if (registroConsumoAgua.fechaUltimaMedicion().isBefore(LocalDate.parse("14/08/2023", DateTimeFormatter.ofPattern("dd/MM/uuuu")))) {
                 System.out.println(registroConsumoAgua.direccion()+"\túltimo registro: "+registroConsumoAgua.fechaUltimaMedicion());
                 count++;
