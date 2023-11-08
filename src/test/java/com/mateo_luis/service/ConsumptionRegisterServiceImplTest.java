@@ -1,5 +1,6 @@
 package com.mateo_luis.service;
 
+import com.mateo_luis.exception.RegisterNullPointerException;
 import org.junit.jupiter.api.Test;
 import com.mateo_luis.repository.RegisterUsingFileRepositoryImpl;
 
@@ -12,7 +13,7 @@ public class ConsumptionRegisterServiceImplTest {
     private ConsumptionRegisterService consuptioConsumptionRegisterService;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws RegisterNullPointerException {
         this.consuptioConsumptionRegisterService = new ConsumptionRegisterServiceImpl(new RegisterUsingFileRepositoryImpl());
         this.consuptioConsumptionRegisterService.ordenamientoBurbuja();
       }

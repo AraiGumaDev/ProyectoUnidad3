@@ -1,8 +1,10 @@
 package com.mateo_luis.service;
 
+import com.mateo_luis.exception.RegisterNullPointerException;
+
 public interface ConsumptionRegisterService {
 
-    void ordenamientoBurbuja();
+    void ordenamientoBurbuja() throws RegisterNullPointerException;
     Double mediaDeConsumoPorVivienda();
     Double totalAguaConsumida();
 
