@@ -30,6 +30,7 @@ public class ConsumptionRegisterServiceImpl implements ConsumptionRegisterServic
 
     @Override
     public void ordenamientoBurbuja() {
+        logger.info("Ordenamiento");
         boolean ordenamientoBurbuja;
         for (int i = 0; i < this.registerRepository.findAllRegisters().size() - 1; i++) {
             ordenamientoBurbuja = false;
