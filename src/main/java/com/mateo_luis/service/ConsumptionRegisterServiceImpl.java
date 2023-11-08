@@ -1,4 +1,5 @@
 package com.mateo_luis.service;
+import com.mateo_luis.exception.RegisterNullPointerException;
 import com.mateo_luis.model.Register;
 import com.mateo_luis.repository.RegisterRepository;
 import org.slf4j.Logger;
@@ -29,22 +30,27 @@ public class ConsumptionRegisterServiceImpl implements ConsumptionRegisterServic
     */
 
     @Override
-    public void ordenamientoBurbuja() {
+    public void ordenamientoBurbuja() throws RegisterNullPointerException {
         logger.info("Ordenamiento");
         boolean ordenamientoBurbuja;
-        for (int i = 0; i < this.registerRepository.findAllRegisters().size() - 1; i++) {
-            ordenamientoBurbuja = false;
+        if (this.registerRepository.findAllRegisters().isEmpty()) {
+            logger.error( "La lista está vacía {}", this.registerRepository.findAllRegisters() );
+            throw new RegisterNullPointerException(this.registerRepository.findAllRegisters());
+        } else {
+            for (int i = 0; i < this.registerRepository.findAllRegisters().size() - 1; i++) {
+                ordenamientoBurbuja = false;
 
-            for (int j = 0; j < this.registerRepository.findAllRegisters().size() - i - 1; j++) {
-                if (this.registerRepository.findAllRegisters().get(j).numeroHabitantes() > this.registerRepository.findAllRegisters().get(j + 1).numeroHabitantes()) {
-                    Register temp = this.registerRepository.findAllRegisters().get(j);
-                    this.registerRepository.findAllRegisters().set(j, this.registerRepository.findAllRegisters().get(j + 1));
-                    this.registerRepository.findAllRegisters().set(j + 1, temp);
-                    ordenamientoBurbuja = true;
+                for (int j = 0; j < this.registerRepository.findAllRegisters().size() - i - 1; j++) {
+                    if (this.registerRepository.findAllRegisters().get(j).numeroHabitantes() > this.registerRepository.findAllRegisters().get(j + 1).numeroHabitantes()) {
+                        Register temp = this.registerRepository.findAllRegisters().get(j);
+                        this.registerRepository.findAllRegisters().set(j, this.registerRepository.findAllRegisters().get(j + 1));
+                        this.registerRepository.findAllRegisters().set(j + 1, temp);
+                        ordenamientoBurbuja = true;
+                    }
                 }
-            }
-            if (!ordenamientoBurbuja) {
-                break;
+                if (!ordenamientoBurbuja) {
+                    break;
+                }
             }
         }
     }
