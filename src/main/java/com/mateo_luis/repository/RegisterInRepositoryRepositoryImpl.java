@@ -19,7 +19,7 @@ import org.slf4j.LoggerFactory;
 import com.mateo_luis.model.Register;
 
 public class RegisterUsingFileRepositoryImpl implements RegisterRepository {
-    private static final Logger logger = LoggerFactory.getLogger( RegisterInRepositoryRepositoryImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger( RegisterUsingFileRepositoryImpl.class);
     private List<Register> registerList;
 
     public RegisterUsingFileRepositoryImpl() {
@@ -28,7 +28,7 @@ public class RegisterUsingFileRepositoryImpl implements RegisterRepository {
 
     private List<Register> loadRegisters(){
         logger.info( "Cargando los datos desde archivo" );
-        List<String> plainTextRegisterList =  readFileWithRegister();
+        List<String> plainTextRegisterList =  readFileWithRegisters();
         List<Register> registerList = plainTextRegisterList.stream().map( this::buildRegister ).toList();
         return registerList;
     }
