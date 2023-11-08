@@ -11,7 +11,6 @@ import java.util.List;
 
 public class ConsumptionRegisterServiceImpl implements ConsumptionRegisterService {
 
-
     private static final Logger logger = LoggerFactory.getLogger(ConsumptionRegisterServiceImpl.class);
     private final RegisterRepository registerRepository;
 
@@ -19,17 +18,9 @@ public class ConsumptionRegisterServiceImpl implements ConsumptionRegisterServic
         this.registerRepository = registerRepository;
     }
 
- /*
-    RegisterUsingFileRepositoryImpl registro = new RegisterUsingFileRepositoryImpl();
-    List<Register> registrosDeConsumoDeAgua = this.registerRepository.findAllRegisters();
-
-
-   public ConsumptionRegisterServiceImpl(RegisterUsingFileRepositoryImpl registerUsingFileRepositoryImpl) {
-    }
-    */
-
     @Override
     public void ordenamientoBurbuja() {
+        logger.info("Ordenando registros");
         boolean ordenamientoBurbuja;
         for (int i = 0; i < this.registerRepository.findAllRegisters().size() - 1; i++) {
             ordenamientoBurbuja = false;
@@ -50,6 +41,7 @@ public class ConsumptionRegisterServiceImpl implements ConsumptionRegisterServic
 
     @Override
     public Double mediaDeConsumoPorVivienda() {
+        logger.info("Calculando media de consumo por vivienda");
         System.out.println("----Media de consumo por vivienda----");
         Double aguaConsumidaTotal = totalAguaConsumida();
         Double promedioPorVivienda = aguaConsumidaTotal / this.registerRepository.findAllRegisters().size();
@@ -61,6 +53,7 @@ public class ConsumptionRegisterServiceImpl implements ConsumptionRegisterServic
 
     @Override
     public Double totalAguaConsumida(){
+        logger.info("Calculando el total de agua consumida");
         Double aguaConsumidaTotal = 0D;
         for (Register registroConsumoAgua : this.registerRepository.findAllRegisters()) {
             aguaConsumidaTotal = aguaConsumidaTotal + registroConsumoAgua.consumoAguaMes();
@@ -70,6 +63,7 @@ public class ConsumptionRegisterServiceImpl implements ConsumptionRegisterServic
 
     @Override
     public Double mediaDeConsumoPorHabitante() {
+        logger.info("Calculando media de consumo por habitante");
         System.out.println("\n----Media de consumo por habitante----");
         Integer numeroHabitantes = totalHabitantes();
         Double promedioPorHabitante = Math.round((totalAguaConsumida() / numeroHabitantes)*100.0)/100.0;
@@ -80,6 +74,7 @@ public class ConsumptionRegisterServiceImpl implements ConsumptionRegisterServic
 
     @Override
     public Integer totalHabitantes(){
+        logger.info("Calculando total habitantes");
         Integer habitantesTotal=0;
         for (Register registroConsumoAgua : this.registerRepository.findAllRegisters()) {
             habitantesTotal = habitantesTotal + registroConsumoAgua.numeroHabitantes();
@@ -89,6 +84,7 @@ public class ConsumptionRegisterServiceImpl implements ConsumptionRegisterServic
 
     @Override
     public Double mediaDeHabitantesPorVivienda() {
+        logger.info("Calculando media de habitantes por vivienda");
         System.out.println("\n----Media de habitantes por vivienda----");
         Double promediodeHabitantes = totalHabitantes() / (double) this.registerRepository.findAllRegisters().size();
         System.out.println("\n En la comunidad hay un promedio de " + promediodeHabitantes + " habitantes por vivienda");
@@ -117,6 +113,7 @@ public class ConsumptionRegisterServiceImpl implements ConsumptionRegisterServic
 
     @Override
     public Integer modaDeHabitantesPorHogar() {
+        logger.info( "Calculando mediana de habitantes" );
         System.out.println("\n----La moda de habitantes por hogar----");
         int maximoNumRepeticiones = 0;
         List<Integer> moda = new ArrayList<>();
@@ -152,6 +149,7 @@ public class ConsumptionRegisterServiceImpl implements ConsumptionRegisterServic
 
     @Override
     public Integer registrosDesactualizados() {
+        logger.info("Verificando registros desactualizados");
         System.out.println("\n----Registros desactualizados----");
         System.out.println("\n Las siguientes viviendas tienen registros anteriores a el 2023-08-14:");
         Integer count = 0;

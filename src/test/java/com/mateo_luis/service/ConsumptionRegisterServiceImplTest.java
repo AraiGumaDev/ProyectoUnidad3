@@ -5,7 +5,6 @@ import com.mateo_luis.repository.RegisterUsingFileRepositoryImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
 import org.junit.jupiter.api.BeforeEach;
 
 public class ConsumptionRegisterServiceImplTest {
