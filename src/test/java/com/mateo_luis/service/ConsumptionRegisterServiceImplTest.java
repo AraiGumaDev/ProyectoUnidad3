@@ -36,7 +36,7 @@ public class ConsumptionRegisterServiceImplTest {
 
     @Test
     void media_consumo_por_habitante() {
-        Double mediaConsumo = this.consuptioConsumptionRegisterService.mediaDeConsumoPorHabitante(consuptioConsumptionRegisterService.totalAguaConsumida());
+        Double mediaConsumo = this.consuptioConsumptionRegisterService.mediaDeConsumoPorHabitante();
         assertEquals(mediaConsumo, 6086.18 );
     }
 
@@ -48,7 +48,7 @@ public class ConsumptionRegisterServiceImplTest {
 
     @Test
     void media_habitantes_por_vivienda() {
-        Double mediaHabitantesVivienda = this.consuptioConsumptionRegisterService.mediaDeHabitantesPorVivienda(consuptioConsumptionRegisterService.totalHabitantes());
+        Double mediaHabitantesVivienda = this.consuptioConsumptionRegisterService.mediaDeHabitantesPorVivienda();
         assertEquals(mediaHabitantesVivienda, 3.6);
     }    
 

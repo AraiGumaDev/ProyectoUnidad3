@@ -9,10 +9,9 @@ public class ApplicationRunner {
   
    ConsumptionRegisterService consumptionRegisterService = new ConsumptionRegisterServiceImpl(new RegisterUsingFileRepositoryImpl());
    consumptionRegisterService.ordenamientoBurbuja();
-   
    consumptionRegisterService.mediaDeConsumoPorVivienda();
-   consumptionRegisterService.mediaDeConsumoPorHabitante(consumptionRegisterService.totalAguaConsumida());
-   consumptionRegisterService.mediaDeHabitantesPorVivienda(consumptionRegisterService.totalHabitantes());
+   consumptionRegisterService.mediaDeConsumoPorHabitante();
+   consumptionRegisterService.mediaDeHabitantesPorVivienda();
    consumptionRegisterService.medianaDeHabitantes();
    consumptionRegisterService.modaDeHabitantesPorHogar();
    consumptionRegisterService.registrosDesactualizados();

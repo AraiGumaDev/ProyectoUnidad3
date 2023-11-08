@@ -5,9 +5,13 @@ public interface ConsumptionRegisterService {
     void ordenamientoBurbuja();
     Double mediaDeConsumoPorVivienda();
     Double totalAguaConsumida();
-    Double mediaDeConsumoPorHabitante(Double totalDeAguaConsumida);
+
+    Double mediaDeConsumoPorHabitante();
+
     Integer totalHabitantes();
-    Double mediaDeHabitantesPorVivienda(Integer totalHabitantes);
+
+    Double mediaDeHabitantesPorVivienda();
+
     Double medianaDeHabitantes();
     Integer modaDeHabitantesPorHogar();
     Integer registrosDesactualizados();
