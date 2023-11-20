@@ -34,8 +34,6 @@ function createTable(json){
         });
         tableBody.appendChild(tr);
     });
-
-
 }
 
 function add() {
