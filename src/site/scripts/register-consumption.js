@@ -1,6 +1,6 @@
 function toList(){
     var xhttp = new XMLHttpRequest();
-    xhttp.open('GET', 'http://localhost:8080/grades/', true);
+    xhttp.open('GET', 'http://localhost:8080/registers/', true);
 
     xhttp.onreadystatechange = function() {
 
