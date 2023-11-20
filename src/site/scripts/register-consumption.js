@@ -35,29 +35,30 @@ function createTable(json){
         tableBody.appendChild(tr);
     });
 
-    function add(){
-        console.log("Adicionando");
-        var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
-        xmlhttp.open( "POST", "http://localhost:8080/registers/", true );
 
-        xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+}
 
-        var addrees = document.getElementById("addrees");
-        var socioeconomic_level = document.getElementById("socioeconomic_level");
-        var number_inhabitants = document.getElementById("number_inhabitants");
-        var last_measurement_date = document.getElementById("last_measurement_date");
-        var water_consumption = document.getElementById("water_consumption");
+function add(){
+    console.log("Adicionando");
+    var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
+    xmlhttp.open( "POST", "http://localhost:8080/registers/", true );
+
+    xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+    var direccion = document.getElementById("direccion");
+    var estrato = document.getElementById("estrato");
+    var numeroHabitantes = document.getElementById("numeroHabitantes");
+    var fechaUltimaMedicion = document.getElementById("fechaUltimaMedicion");
+    var consumoAguaMes = document.getElementById("consumoAguaMes");
 
 
-        var newRegister = {
-            "addrees": addrees.value,
-            "socioeconomic_level": socioeconomic_level.value,
-            "number_inhabitants": number_inhabitants.value,
-            "last_measurement_date": last_measurement_date.value,
-            "water_consumption": water_consumption.value,
-        }
-
-        xmlhttp.send(JSON.stringify(newRegister));
+    var newRegister = {
+        "direccion": direccion.value,
+        "estrato": estrato.value,
+        "numero Habitantes": numeroHabitantes.value,
+        "fecha Ultima Medicion": fechaUltimaMedicion.value,
+        "consumo Agua Mes": consumoAguaMes.value,
     }
 
+    xmlhttp.send(JSON.stringify(newRegister));
 }
