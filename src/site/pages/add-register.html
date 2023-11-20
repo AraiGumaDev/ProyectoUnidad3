@@ -9,10 +9,10 @@
 
     <h2>Adiccionar registro</h2>
     <form>
-        <label for="addrees">Dirección</label><br>
-        <input type="text" id="addrees" name="addrees" value="" class="form-control"><br>
-        <label for="socioeconomic_level">Estrato</label><br>
-        <select id="socioeconomic_level" name="socioeconomic_level">
+        <label for="direccion">Dirección</label><br>
+        <input type="text" id="direccion" name="direccion" value="" class="form-control"><br>
+        <label for="estrato">Estrato</label><br>
+        <select id="estrato" name="estrato">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -20,17 +20,43 @@
             <option value="5">5</option>
             <option value="6">6</option>
         </select><br>
-        <label for="number_inhabitants">Número de habitantes</label>
-        <input type="number" id="number_inhabitants" name="number_inhabitants" value="" min="1" class="form-control"><br>
-        <label for="last_measurement_date">Fecha última medición</label>
-        <input type="date" id="last_measurement_date" name="last_measurement_date" value="" min="2000-01-01" max="2023-11-20"
+        <label for="numeroHabitantes">Número de habitantes</label>
+        <input type="number" id="numeroHabitantes" name="numeroHabitantes" value="" min="1" class="form-control"><br>
+        <label for="fechaUltimaMedicion">Fecha última medición</label>
+        <input type="date" id="fechaUltimaMedicion" name="fechaUltimaMedicion" value="" min="2000-01-01" max="2023-11-20"
                required /> <span class="validity"></span><br>
-        <label for="water_consumption">Consumo de agua(Litros)</label>
-        <input type="number" id="water_consumption" name="water_consumption" value="" min="1" class="form-control"><br>
+        <label for="consumoAguaMes">Consumo de agua(Litros)</label>
+        <input type="number" id="consumoAguaMes" name="consumoAguaMes" value="" min="1" class="form-control"><br>
 
-        <input type="submit" value="Guardar" onclick="add();">AGREGAR</input>
+        <input type="submit" value="Guardar" onclick="add();">
         <a href="../index.html" class="link-primary">Volver al inicio</a>
 
     </form>
 </body>
 </html>
+<script>
+    function add(){
+        console.log("Adicionando");
+        var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
+        xmlhttp.open( "POST", "http://localhost:8080/registers/", true );
+
+        xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+        var direccion = document.getElementById("direccion");
+        var estrato = document.getElementById("estrato");
+        var numeroHabitantes = document.getElementById("numeroHabitantes");
+        var fechaUltimaMedicion = document.getElementById("fechaUltimaMedicion");
+        var consumoAguaMes = document.getElementById("consumoAguaMes");
+
+
+        var newRegister = {
+            "direccion": direccion.value,
+            "estrato": estrato.value,
+            "numeroHabitantes": numeroHabitantes.value,
+            "fechaUltimaMedicion": fechaUltimaMedicion.value,
+            "consumoAguaMes": consumoAguaMes.value,
+        }
+
+        xmlhttp.send(JSON.stringify(newRegister));
+    }
+</script>
