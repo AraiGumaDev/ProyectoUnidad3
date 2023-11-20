@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="../scripts/register-consumption.js"> </script>
+     <!--<script src="../scripts/register-consumption.js"> </script>-->
 </head>
 <body>
     <h2>Lista de notas</h2>
@@ -12,6 +12,50 @@
         <td>Dirección</td><td>Estrato</td><td>Número de Habitantes</td><td>Fecha de Registro</td><td>Consumo de Agua</td>
         </thead>
     </table>
-    <a hrer="#" class="link-primary" onclick="toList();">Listar</a>
+
+    <button onclick="toList();">Listar</button>
+
+    <a href="../index.html" class="link-primary">Volver al inicio</a>
 </body>
 </html>
+
+<script>
+    function toList(){
+        var xhttp = new XMLHttpRequest();
+        xhttp.open('GET', 'http://localhost:8080/grades/', true);
+
+        xhttp.onreadystatechange = function() {
+
+            if (xhttp.readyState === XMLHttpRequest.DONE) {
+                var status = xhttp.status;
+                if (status === 0 || (status >= 200 && status < 400)) {
+                    var json = JSON.parse(xhttp.responseText);
+                    createTable(json);
+                } else {
+                    console.log("Error");
+                }
+            }
+        };
+        xhttp.send();
+    }
+
+    function createTable(json){
+        var tableBody = document.getElementById("table_body");
+
+        var child = tableBody.childElementCount;
+        for ( let row = 1; row < child; row++ ) {
+            tableBody.deleteRow(child-row);
+        }
+
+        json.forEach((row) => {
+            var tr = document.createElement("tr");
+            Object.values(row).forEach((cell) => {
+                var td = document.createElement("td");
+                td.textContent = cell;
+                tr.appendChild(td);
+            });
+            tableBody.appendChild(tr);
+        });
+
+    }
+</script>

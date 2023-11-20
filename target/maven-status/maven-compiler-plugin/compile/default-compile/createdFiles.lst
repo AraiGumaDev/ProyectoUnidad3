@@ -1,0 +1,9 @@
+com\mateo_luis\service\ConsumptionRegisterServiceImpl.class
+com\mateo_luis\service\ConsumptionRegisterService.class
+com\mateo_luis\repository\RegisterUsingFileRepositoryImpl.class
+com\mateo_luis\Application.class
+com\mateo_luis\exception\RegisterNullPointerException.class
+com\mateo_luis\controller\RegisterController.class
+com\mateo_luis\repository\RegisterRepository.class
+com\mateo_luis\ApplicationRunner.class
+com\mateo_luis\model\Register.class
