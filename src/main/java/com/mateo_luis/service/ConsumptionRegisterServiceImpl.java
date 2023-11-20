@@ -50,12 +50,8 @@ public class ConsumptionRegisterServiceImpl implements ConsumptionRegisterServic
     @Override
     public Double mediaDeConsumoPorVivienda() {
         logger.info("Calculando media de consumo por vivienda");
-        System.out.println("----Media de consumo por vivienda----");
         Double aguaConsumidaTotal = totalAguaConsumida();
         Double promedioPorVivienda = aguaConsumidaTotal / this.registerRepository.findAllRegisters().size();
-        System.out.println("\n En total las " + this.registerRepository.findAllRegisters().size() + " viviendas listadas consumieron: "
-                + aguaConsumidaTotal + " Litros. Lo que da un promedio por vivienda de: " + promedioPorVivienda + " Litros");
-
         return promedioPorVivienda;
     }
 
@@ -72,11 +68,8 @@ public class ConsumptionRegisterServiceImpl implements ConsumptionRegisterServic
     @Override
     public Double mediaDeConsumoPorHabitante() {
         logger.info("Calculando media de consumo por habitante");
-        System.out.println("\n----Media de consumo por habitante----");
         Integer numeroHabitantes = totalHabitantes();
         Double promedioPorHabitante = Math.round((totalAguaConsumida() / numeroHabitantes)*100.0)/100.0;
-        System.out.println("\n Habiendo " + numeroHabitantes + " habitantes listados, el promedio de consumo por persona sería "
-                + promedioPorHabitante + " Litros");
         return promedioPorHabitante;
     }
 
@@ -93,16 +86,13 @@ public class ConsumptionRegisterServiceImpl implements ConsumptionRegisterServic
     @Override
     public Double mediaDeHabitantesPorVivienda() {
         logger.info("Calculando media de habitantes por vivienda ");
-        System.out.println("\n----Media de habitantes por vivienda----");
         Double promediodeHabitantes = totalHabitantes() / (double) this.registerRepository.findAllRegisters().size();
-        System.out.println("\n En la comunidad hay un promedio de " + promediodeHabitantes + " habitantes por vivienda");
         return promediodeHabitantes;
     }
 
     @Override
     public Double medianaDeHabitantes() {
         logger.info( "Calculando mediana de habitantes" );
-        System.out.println("\n----Mediana de habitantes----");
         String medianaHabitantes = "";
 
         if (this.registerRepository.findAllRegisters().size() % 2 == 0) {
@@ -114,7 +104,6 @@ public class ConsumptionRegisterServiceImpl implements ConsumptionRegisterServic
             int posicion = (this.registerRepository.findAllRegisters().size() - 1) / 2;
             medianaHabitantes = "" + this.registerRepository.findAllRegisters().get(posicion).numeroHabitantes();
         }
-        System.out.println("\n La mediana de habitantes por hogar es: " + medianaHabitantes);
         return Double.parseDouble(medianaHabitantes);
         
     }
@@ -122,7 +111,6 @@ public class ConsumptionRegisterServiceImpl implements ConsumptionRegisterServic
     @Override
     public Integer modaDeHabitantesPorHogar() {
         logger.info("calculando moda de habitantes por hogar");
-        System.out.println("\n----La moda de habitantes por hogar----");
         int maximoNumRepeticiones = 0;
         List<Integer> moda = new ArrayList<>();
 
@@ -142,7 +130,6 @@ public class ConsumptionRegisterServiceImpl implements ConsumptionRegisterServic
             }
         }
 
-        System.out.println("\n La moda de habitantes por hogar es: ");
         for (int i = 0; i < moda.size(); i++) {
             System.out.print(moda.get(i));
             if (i < moda.size() - 2) {
@@ -151,19 +138,15 @@ public class ConsumptionRegisterServiceImpl implements ConsumptionRegisterServic
                 System.out.print(" y ");
             }
         }
-        System.out.println(" que se repitieron " + maximoNumRepeticiones + " veces.");
         return moda.get(moda.size()-1);
     }
 
     @Override
     public Integer registrosDesactualizados() {
         logger.info("Comprobando registros desactualizados");
-        System.out.println("\n----Registros desactualizados----");
-        System.out.println("\n Las siguientes viviendas tienen registros anteriores a el 2023-08-14:");
         Integer count = 0;
         for (Register registroConsumoAgua : this.registerRepository.findAllRegisters()){
             if (registroConsumoAgua.fechaUltimaMedicion().isBefore(LocalDate.parse("14/08/2023", DateTimeFormatter.ofPattern("dd/MM/uuuu")))) {
-                System.out.println(registroConsumoAgua.direccion()+"\túltimo registro: "+registroConsumoAgua.fechaUltimaMedicion());
                 count++;
             }
         }
