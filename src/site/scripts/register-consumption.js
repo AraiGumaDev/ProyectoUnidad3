@@ -38,29 +38,31 @@ function createTable(json){
 
 }
 
-function add(){
-    console.log("Adicionando");
-    var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
-    xmlhttp.open( "POST", "http://localhost:8080/registers/", true );
+function add() {
+    if (validateForm() == true) {
+        console.log("Adicionando");
+        var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
+        xmlhttp.open("POST", "http://localhost:8080/registers/", true);
 
-    xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
-    var direccion = document.getElementById("direccion");
-    var estrato = document.getElementById("estrato");
-    var numeroHabitantes = document.getElementById("numeroHabitantes");
-    var fechaUltimaMedicion = document.getElementById("fechaUltimaMedicion");
-    var consumoAguaMes = document.getElementById("consumoAguaMes");
+        var direccion = document.getElementById("direccion");
+        var estrato = document.getElementById("estrato");
+        var numeroHabitantes = document.getElementById("numeroHabitantes");
+        var fechaUltimaMedicion = document.getElementById("fechaUltimaMedicion");
+        var consumoAguaMes = document.getElementById("consumoAguaMes");
 
 
-    var newRegister = {
-        "direccion": direccion.value,
-        "estrato": estrato.value,
-        "numeroHabitantes": numeroHabitantes.value,
-        "fechaUltimaMedicion": fechaUltimaMedicion.value,
-        "consumoAguaMes": consumoAguaMes.value,
+        var newRegister = {
+            "direccion": direccion.value,
+            "estrato": estrato.value,
+            "numeroHabitantes": numeroHabitantes.value,
+            "fechaUltimaMedicion": fechaUltimaMedicion.value,
+            "consumoAguaMes": consumoAguaMes.value,
+        }
+
+        xmlhttp.send(JSON.stringify(newRegister));
     }
-
-    xmlhttp.send(JSON.stringify(newRegister));
 }
 
 function validateForm() {
@@ -69,6 +71,7 @@ function validateForm() {
         alert('Por favor, completa todos los campos requeridos.');
         return false;
     }
+    return true;
 }
 
 
