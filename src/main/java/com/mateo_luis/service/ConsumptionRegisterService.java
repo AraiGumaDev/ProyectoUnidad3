@@ -1,6 +1,9 @@
 package com.mateo_luis.service;
 
 import com.mateo_luis.exception.RegisterNullPointerException;
+import com.mateo_luis.model.Register;
+
+import java.util.List;
 
 public interface ConsumptionRegisterService {
 
@@ -17,4 +20,8 @@ public interface ConsumptionRegisterService {
     Double medianaDeHabitantes();
     Integer modaDeHabitantesPorHogar();
     Integer registrosDesactualizados();
+
+    List<Register> listAllRegisters();
+
+    Register addRegister(Register newRegister);
 }
