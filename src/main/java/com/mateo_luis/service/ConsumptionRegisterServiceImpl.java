@@ -170,13 +170,7 @@ public class ConsumptionRegisterServiceImpl implements ConsumptionRegisterServic
         return count;
     }
 
-    @Override
-    public List<Register> listAllRegisters() {
-        return null;
-    }
-
-
-    public List<Register> listAllGrades(){
+    public List<Register> listAllRegisters(){
         return this.registerRepository.findAllRegisters();
     }
 

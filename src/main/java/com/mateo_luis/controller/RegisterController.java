@@ -1,5 +1,6 @@
 package com.mateo_luis.controller;
 
+import java.sql.SQLOutput;
 import java.util.List;
 import com.mateo_luis.model.Register;
 import com.mateo_luis.repository.RegisterUsingFileRepositoryImpl;
@@ -18,6 +19,7 @@ public class RegisterController {
     @GetMapping
     public List<Register> listRegister(){
 
+        System.out.println("Listando Registros");
         List<Register> registerList = consumptionRegisterService.listAllRegisters();
         return  registerList;
     }
