@@ -4,59 +4,56 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="../scripts/register-consumption.js"> </script>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link href="../styles/general.css" rel="stylesheet">
 </head>
-<body>
+<body class="bg-dark">
+<h2 class="text-center text-white">Adicionar registro</h2>
+    <form class="text-white" onsubmit="return validateForm()">
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="direccion" class="form-label">Dirección</label>
+                <input type="text" id="direccion" name="direccion" value="" class="form-control">
+            </div>
+            <div class="col-md-6">
+                <label for="estrato" class="form-label">Estrato</label>
+                <select id="estrato" name="estrato" class="form-control">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </select>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="numeroHabitantes" class="form-label">Número de habitantes</label>
+                <input type="number" id="numeroHabitantes" name="numeroHabitantes" value="" min="1" class="form-control">
+            </div>
 
-    <h2>Adiccionar registro</h2>
-    <form>
-        <label for="direccion">Dirección</label><br>
-        <input type="text" id="direccion" name="direccion" value="" class="form-control"><br>
-        <label for="estrato">Estrato</label><br>
-        <select id="estrato" name="estrato">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-        </select><br>
-        <label for="numeroHabitantes">Número de habitantes</label>
-        <input type="number" id="numeroHabitantes" name="numeroHabitantes" value="" min="1" class="form-control"><br>
-        <label for="fechaUltimaMedicion">Fecha última medición</label>
-        <input type="date" id="fechaUltimaMedicion" name="fechaUltimaMedicion" value="" min="2000-01-01" max="2023-11-20"
-               required /> <span class="validity"></span><br>
-        <label for="consumoAguaMes">Consumo de agua(Litros)</label>
-        <input type="number" id="consumoAguaMes" name="consumoAguaMes" value="" min="1" class="form-control"><br>
-
-        <input type="submit" value="Guardar" onclick="add();">
-        <a href="../index.html" class="link-primary">Volver al inicio</a>
-
+            <div class="col-md-6">
+                <label for="consumoAguaMes" class="form-label">Consumo de agua (Litros)</label>
+                <input type="number" id="consumoAguaMes" name="consumoAguaMes" value="" min="1" class="form-control">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="fechaUltimaMedicion" class="form-label">Fecha última medición</label>
+                <input type="date" id="fechaUltimaMedicion" name="fechaUltimaMedicion" value="" min="2000-01-01" max="2023-11-20" required>
+            </div>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-outline-primary" onclick="add();">Añadir</button>
+            <button type="button" class="btn btn-outline-light" onclick="window.location.href='list.html'">Mostrar registros</button>
+            <button type="button" class="btn btn-outline-light" onclick="window.location.href='../index.html'">Inicio</button>
+        </div>
     </form>
+
 </body>
 </html>
-<script>
-    function add(){
-        console.log("Adicionando");
-        var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
-        xmlhttp.open( "POST", "http://localhost:8080/registers/", true );
 
-        xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-
-        var direccion = document.getElementById("direccion");
-        var estrato = document.getElementById("estrato");
-        var numeroHabitantes = document.getElementById("numeroHabitantes");
-        var fechaUltimaMedicion = document.getElementById("fechaUltimaMedicion");
-        var consumoAguaMes = document.getElementById("consumoAguaMes");
-
-
-        var newRegister = {
-            "direccion": direccion.value,
-            "estrato": estrato.value,
-            "numeroHabitantes": numeroHabitantes.value,
-            "fechaUltimaMedicion": fechaUltimaMedicion.value,
-            "consumoAguaMes": consumoAguaMes.value,
-        }
-
-        xmlhttp.send(JSON.stringify(newRegister));
-    }
-</script>

@@ -38,4 +38,38 @@ function createTable(json){
 
 }
 
+function add(){
+    console.log("Adicionando");
+    var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
+    xmlhttp.open( "POST", "http://localhost:8080/registers/", true );
+
+    xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+    var direccion = document.getElementById("direccion");
+    var estrato = document.getElementById("estrato");
+    var numeroHabitantes = document.getElementById("numeroHabitantes");
+    var fechaUltimaMedicion = document.getElementById("fechaUltimaMedicion");
+    var consumoAguaMes = document.getElementById("consumoAguaMes");
+
+
+    var newRegister = {
+        "direccion": direccion.value,
+        "estrato": estrato.value,
+        "numeroHabitantes": numeroHabitantes.value,
+        "fechaUltimaMedicion": fechaUltimaMedicion.value,
+        "consumoAguaMes": consumoAguaMes.value,
+    }
+
+    xmlhttp.send(JSON.stringify(newRegister));
+}
+
+function validateForm() {
+    const form = document.querySelector('form');
+    if (!form.checkValidity()) {
+        alert('Por favor, completa todos los campos requeridos.');
+        return false;
+    }
+}
+
+
 

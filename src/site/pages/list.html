@@ -2,20 +2,34 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Registros guardados</title>
      <script src="../scripts/register-consumption.js"> </script>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </head>
-<body>
-    <h2>Registro de consumo de agua</h2>
-    <table id="table_body" class="table table-striped">
-        <thead>
-        <td>Dirección</td><td>Estrato</td><td>Número de Habitantes</td><td>Fecha de Registro</td><td>Consumo de Agua</td>
-        </thead>
-    </table>
+<body class="bg-dark">
+    <h2 class="text-center text-white">Registro de consumo de agua</h2>
 
-    <button onclick="toList();">Mostrar registro</button>
+    <div class="container-fluid h-100">
+        <div class="container">
+            <table id="table_body" class="table table-dark table-striped">
+                <thead>
+                <td>Dirección</td><td>Estrato</td><td>Número de Habitantes</td><td>Fecha de Registro</td><td>Consumo de Agua</td>
+                </thead>
+            </table>
+        </div>
 
-    <a href="../index.html" class="link-primary">Volver al inicio</a>
+        <div class ="w-100 text-center">
+            <button type="button" class="btn btn-outline-light" onclick="toList();">Mostrar registro</button>
+            <button type="button" class="btn btn-outline-light" onclick="window.location.href='add-register.html'">Añadir nuevo registro</button>
+            <button type="button" class="btn btn-outline-light" onclick="window.location.href='../index.html'">Inicio</button>
+        </div>
+    </div>
+
 </body>
+
+
 </html>
 
