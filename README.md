@@ -11,10 +11,17 @@
       cualquier comunidad y podría ayudar a identificar quienes son los individuos que 
       hacen mal uso de este preciado recurso.
 
-#Tecnologías Usadas
+# Tecnologías Usadas
+## Backend
+- JDK 17
+- Maven
+- SpringBoot
+- JUnit (Test)
+- slf4j (Loggers)
+- Google Java Formatter (Format)
+## Frontend
+- JavaScript
+- Html
+- Bootstrap
 
-      * JDK 17
-      * JUnit (Test)
-      * slf4j 
-      * Google Java Formatter
       
